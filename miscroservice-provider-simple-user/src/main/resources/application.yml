@@ -1,12 +1,13 @@
 spring:
+  application:    name: userservice
   devtools:
     restart:
-      enabled: true
+      enabled: false
       additional-paths: src/main/java
   datasource:
     url: jdbc:mysql://localhost:3306/ws?useSSL=false&useUnicode=true&characterEncoding=utf8
     username: root
-    password: root
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
     platform: mysql
     continue-on-error: true
@@ -23,14 +24,15 @@ spring:
     properties:
       hibernate:
         dialect : org.hibernate.dialect.MySQL5Dialect
+        
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     
 server:
-  port: 8000
+  port: 8001
   servlet:
     session:
       timeout: 7200
@@ -41,5 +43,9 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: trace
     org.hibernate.type.descriptor.sql.BasicExtractor: trace
     com.spring: debug
-  
+    
+eureka:  client:    serviceUrl:
+      defaultZone: http://127.0.0.1:8200/eureka/
+  instance:
+    prefer-ip-address: true    instance-id: ${spring.application.name}:${server.port}
         

@@ -6,6 +6,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,8 +20,10 @@ public class MoveContoller {
 	private LoadBalancerClient balancerClient;
 	
 	@GetMapping("/movie/{id}")
+	@ResponseBody
 	public User getUser(@PathVariable Long id) {
-		return restTemplate.getForObject("http://userservice/user/"+id, User.class);
+		User user =  restTemplate.getForObject("http://userservice/user/"+id, User.class);
+		return user;
 	}
 	@GetMapping("/test")
 	public String testLoadBalance() {

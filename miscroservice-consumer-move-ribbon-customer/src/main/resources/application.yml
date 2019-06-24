@@ -1,4 +1,4 @@
-spring:  devtools:    restart:      enabled: true      additional-paths: src/main/java  application:    name: movie
+spring:  devtools:    restart:      enabled: true      additional-paths: src/main/java  application:    name: movie-ribbon-customer
 server:
   port: 8100
   

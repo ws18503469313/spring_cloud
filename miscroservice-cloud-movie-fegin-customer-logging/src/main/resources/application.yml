@@ -1,0 +1,4 @@
+spring:  devtools:    restart:      enabled: true      additional-paths: src/main/java  application:    name: fegin-customer-movie
+server:
+  port: 8108      
+eureka:  client:    service-url:      defaultZone: http://127.0.0.1:8200/eureka/  instance:    prefer-ip-address: true    instance-id: ${spring.application.name}:${server.port}    metadata-map:      zone: polunzi      wang: shuailogging:  level:    com.spring.controller.MoveContoller: info    com.spring.feginApi.UserFeginClient: debug#hystrix默认超时熔断时间hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 20000

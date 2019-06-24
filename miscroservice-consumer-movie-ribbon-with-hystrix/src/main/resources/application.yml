@@ -1,0 +1,8 @@
+spring:  devtools:    restart:      enabled: true      additional-paths: src/main/java  application:    name: movie-ribbon-with-hytrix
+server:
+  port: 8100
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8200/eureka/  instance:    prefer-ip-address: true    instance-id: ${spring.application.name}:${server.port}

@@ -7,5 +7,5 @@ import com.spring.model.User;
 
 @Repository
 public interface UserDAO extends JpaRepository<User, Long>{
-
+	
 }

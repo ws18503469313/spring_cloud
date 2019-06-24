@@ -1,0 +1,45 @@
+---
+server:
+  port: 8201
+eureka:
+  client:
+    service-url:      defaultZone: http://peer2:8202/eureka/,http://peer3:8203/eureka/  instance:    hostname: peer1
+spring:
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java  profiles: peer1  application:    name: peer1
+---   
+server:
+  port: 8202
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:8201/eureka/,http://peer3:8203/eureka/
+  instance:
+    hostname: peer2
+
+spring:
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+  profiles: peer2  application:    name: peer2
+---   
+server:
+  port: 8203
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:8201/eureka/,http://peer2:8202/eureka/
+  instance:
+    hostname: peer3
+
+spring:
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+  profiles: peer3
+  application:
+    name: peer3

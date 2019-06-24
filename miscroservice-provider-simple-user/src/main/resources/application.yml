@@ -32,7 +32,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     
 server:
-  port: 8001
+  port: 8000
   servlet:
     session:
       timeout: 7200
@@ -45,7 +45,9 @@ logging:
     com.spring: debug
     
 eureka:  client:    serviceUrl:
+#http://peer1:8201/eureka/,http://peer2:8202/eureka/
       defaultZone: http://127.0.0.1:8200/eureka/
   instance:
     prefer-ip-address: true    instance-id: ${spring.application.name}:${server.port}
+    appname: UserService-HAHA
         

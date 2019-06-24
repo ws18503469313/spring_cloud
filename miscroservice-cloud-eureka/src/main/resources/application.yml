@@ -1,16 +1,16 @@
 server:
   port: 8200
 eureka:
+  datacenter: cloud
+  environment: product
   client:
     register-with-eureka: false
     fetch-registry: false
-    service-url:      defaultZone: http://127.0.0.1:8200/eureka/
-
+    service-url:      defaultZone: http://127.0.0.1:8200/eureka/  dashboard:    enabled: true    path: /x
 spring:
   devtools:
     restart:
       enabled: true
       additional-paths: src/main/java
       
-    
       

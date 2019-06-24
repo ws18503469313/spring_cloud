@@ -3,7 +3,6 @@ package com.spring.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +11,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Table(name = "t_user")
-@Entity
+@javax.persistence.Entity
 @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler"}) 
 public class User  implements Serializable {
     /**
@@ -23,7 +22,7 @@ public class User  implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-	@Column
+	@Column(nullable = false)
     private String phone;
 	@Column
     private String username;
